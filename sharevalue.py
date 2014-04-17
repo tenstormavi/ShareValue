@@ -12,6 +12,7 @@ class share(Frame):
         
         self.parent.title("Share Value Calculator")
         self.pack()
+        self.centerWindow()
         self.cwd = StringVar(self.parent)
         self.dirfm = Frame(self.parent)
         self.label = Label(self.dirfm, text = "")
@@ -57,6 +58,18 @@ class share(Frame):
             self.label.config(text = result)
             self.label.update()
 
+    def centerWindow(self):
+      
+        w = 500
+        h = 200
+
+        sw = self.parent.winfo_screenwidth()
+        sh = self.parent.winfo_screenheight()
+        
+        x = (sw - w)/2
+        y = (sh - h)/2
+        self.parent.geometry('%dx%d+%d+%d' % (w, h, x, y))
+
     def clear(self, ev = None):
         self.dirn.delete(0, Tkinter.END)
         self.label.config(text = " ")
@@ -65,7 +78,6 @@ class share(Frame):
 
 def main():
     root = Tk()
-    root.geometry("500x200")
     app = share(root)
     root.mainloop()  
 
